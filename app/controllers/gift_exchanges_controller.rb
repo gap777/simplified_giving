@@ -16,7 +16,7 @@ class GiftExchangesController < ApplicationController
   def create
     @gift_exchange = GiftExchange.new(**gift_exchange_params, owner: current_user)
     if @gift_exchange.save
-      redirect_to @gift_exchange
+      redirect_to gift_exchanges_path, notice: 'Gift exchange was successfully created.'
     else
       render :new
     end
