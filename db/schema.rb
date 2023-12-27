@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_12_27_030910) do
+ActiveRecord::Schema[7.1].define(version: 2023_12_27_032458) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -45,7 +45,18 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_27_030910) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "wish_lists", primary_key: ["participant_id", "gift_exchange_id"], force: :cascade do |t|
+    t.bigint "participant_id", null: false
+    t.bigint "gift_exchange_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["gift_exchange_id"], name: "index_wish_lists_on_gift_exchange_id"
+    t.index ["participant_id"], name: "index_wish_lists_on_participant_id"
+  end
+
   add_foreign_key "gift_exchange_users", "gift_exchanges"
   add_foreign_key "gift_exchange_users", "users", column: "participant_id"
   add_foreign_key "gift_exchanges", "users", column: "owner_id"
+  add_foreign_key "wish_lists", "gift_exchanges"
+  add_foreign_key "wish_lists", "users", column: "participant_id"
 end
