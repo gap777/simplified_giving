@@ -1,6 +1,15 @@
 require 'rails_helper'
 
 RSpec.describe GiftExchange, type: :model do
+  describe 'validations' do
+    subject { build :gift_exchange }
+
+    it { should validate_presence_of :name }
+    it { should validate_presence_of :description }
+    it { should validate_presence_of :owner }
+    it { should validate_presence_of :event_date }
+  end
+
   it 'has an owner' do
     exchange = create :gift_exchange
     expect(exchange.owner).to be_a User

@@ -9,5 +9,5 @@ class User < ApplicationRecord
                           join_table: :gift_exchange_users,
                           foreign_key: :participant_id,
                           association_foreign_key: :gift_exchange_id
-  
+
 end
