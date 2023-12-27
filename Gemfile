@@ -74,3 +74,5 @@ group :development, :test do
   gem "factory_bot_rails"
 end
 gem "standard", group: [:development, :test]
+
+gem "devise", "~> 4.9"
