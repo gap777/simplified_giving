@@ -29,7 +29,7 @@ class GiftExchangesController < ApplicationController
   def update
     @gift_exchange = GiftExchange.find(params[:id])
     if @gift_exchange.update(gift_exchange_params)
-      redirect_to @gift_exchange
+      redirect_to gift_exchanges_path, notice: 'Gift exchange was successfully updated.'
     else
       render :edit
     end
