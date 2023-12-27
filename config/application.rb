@@ -23,5 +23,10 @@ module SimplifiedGiving
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+    config.generators do |g|
+      g.template_engine :slim
+      g.test_framework :rspec
+      g.system_tests = nil
+    end
   end
 end

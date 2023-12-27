@@ -1,0 +1,30 @@
+<h1>Create Gift Exchange Event</h1>
+<%= form_for @gift_exchange do |f| %>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col">
+        <%= f.label :event_date %>
+      </div>
+      <div class="col">
+        <%= f.date_select :event_date %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <%= f.label :name %>
+      </div>
+      <div class="col">
+        <%= f.text_field :name %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <%= f.label :description %>
+      </div>
+      <div class="col">
+        <%= f.text_area :description %>
+      </div>
+    </div>
+    <%= f.submit %>
+  </div>
+<% end %>

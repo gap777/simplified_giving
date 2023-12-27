@@ -1,0 +1,7 @@
+<% @gift_exchanges.each do |exchange| %>
+  <%= link_to exchange.name, gift_exchange_path(exchange) %>
+  <% if exchange.owner == current_user %>
+    <%= link_to "Edit", edit_gift_exchange_path(exchange) %>
+    <%= button_to "Delete", gift_exchange_path(exchange), method: :delete, data: { confirm: "Are you sure?" } %>
+  <% end %>
+<% end %>
