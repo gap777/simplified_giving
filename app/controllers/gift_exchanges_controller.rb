@@ -23,6 +23,11 @@ class GiftExchangesController < ApplicationController
   end
 
   def edit
+    unless current_user.managed_gift_exchanges.exists?(params[:id])
+      redirect_to gift_exchanges_path, notice: 'You are not authorized.'
+      return
+    end
+
     @gift_exchange = GiftExchange.find(params[:id])
   end
 

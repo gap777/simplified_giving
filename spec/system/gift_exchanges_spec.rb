@@ -25,7 +25,7 @@ RSpec.describe 'Gift exchanges', type: :system do
     expect(new_gift_exchange.event_date).to eq event_date
   end
 
-  it 'allows a user to edit a gift exchange' do
+  it 'allows the owner to edit a gift exchange' do
     gift_exchange = create :gift_exchange, owner: user
     visit edit_gift_exchange_path(gift_exchange)
     fill_in 'Name', with: name
@@ -33,5 +33,11 @@ RSpec.describe 'Gift exchanges', type: :system do
     fill_in 'Event date', with: event_date
     click_button 'Update Gift exchange'
     expect(page).to have_content 'Gift exchange was successfully updated.'
+  end
+
+  it 'prevents a non-owner from editing a gift exchange' do
+    gift_exchange = create :gift_exchange, owner: create(:user)
+    visit edit_gift_exchange_path(gift_exchange)
+    expect(page).to have_content 'You are not authorized.'
   end
 end
