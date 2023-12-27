@@ -2,7 +2,7 @@ class GiftExchangesController < ApplicationController
   before_action :authenticate_user!
   
   def index
-    @gift_exchanges = current_user.gift_exchanges
+    @gift_exchanges = current_user.managed_gift_exchanges
   end
 
   def show

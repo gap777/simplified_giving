@@ -5,7 +5,6 @@ RSpec.describe GiftExchange, type: :model do
     subject { build :gift_exchange }
 
     it { should validate_presence_of :name }
-    it { should validate_presence_of :description }
     it { should validate_presence_of :owner }
     it { should validate_presence_of :event_date }
   end

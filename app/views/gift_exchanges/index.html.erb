@@ -1,7 +1,15 @@
-<% @gift_exchanges.each do |exchange| %>
-  <%= link_to exchange.name, gift_exchange_path(exchange) %>
-  <% if exchange.owner == current_user %>
-    <%= link_to "Edit", edit_gift_exchange_path(exchange) %>
-    <%= button_to "Delete", gift_exchange_path(exchange), method: :delete, data: { confirm: "Are you sure?" } %>
+<h1>Gift Exchanges</h1>
+<div class="container-fluid">
+  <% if @gift_exchanges.empty? %>
+    <p>There are no gift exchanges yet. Create one <%= link_to 'here', new_gift_exchange_path %></p>
+  <% else %>
+    <%= link_to "Create a new gift exchange", new_gift_exchange_path %>
   <% end %>
-<% end %>
+  <% @gift_exchanges.each do |exchange| %>
+    <%= link_to exchange.name, gift_exchange_path(exchange) %>
+    <% if exchange.owner == current_user %>
+      <%= link_to "Edit", edit_gift_exchange_path(exchange) %>
+      <%= button_to "Delete", gift_exchange_path(exchange), method: :delete, data: { confirm: "Are you sure?" } %>
+    <% end %>
+  <% end %>
+</div>

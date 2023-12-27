@@ -10,12 +10,12 @@ RSpec.describe User, type: :model do
     it { should validate_presence_of :email }
   end
 
-  it 'has many gift exchanges' do
+  it 'can participate in many gift exchanges' do
     user = create :user
     exchanges = create_list :gift_exchange, 3
     exchanges.first.participants << user
     exchanges.second.participants << user
     exchanges.third.participants << user
-    expect(user.gift_exchanges).to eq exchanges
+    expect(user.participatory_gift_exchanges).to eq exchanges
   end
 end

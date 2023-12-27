@@ -18,6 +18,7 @@ RSpec.describe 'Gift exchanges', type: :system do
     fill_in 'Event date', with: event_date
     click_button 'Create Gift exchange'
     expect(page).to have_content 'Gift exchange was successfully created.'
+    expect(page).to have_content name
     new_gift_exchange = GiftExchange.last
     expect(new_gift_exchange.name).to eq name
     expect(new_gift_exchange.description).to eq description
