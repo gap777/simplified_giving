@@ -6,7 +6,7 @@
         <%= f.label :event_date %>
       </div>
       <div class="col">
-        <%= f.date_select :event_date %>
+        <%= f.text_field :event_date, data: { controller: 'date' } %>
       </div>
     </div>
     <div class="row">
